@@ -29,7 +29,7 @@ public class FileController {
     }
 
     @GetMapping("/getfile")
-    public ResponseEntity<InputStreamResource> dowlandFile(@RequestParam(value = "id") String id) throws IOException {
+    public ResponseEntity<InputStreamResource> downlandFile(@RequestParam(value = "id") String id) throws IOException {
         GridFsResource file = fileService.getFile(id);
 
         return ResponseEntity.ok().contentType(resolveContentType(file.getContentType())).body(new InputStreamResource(file.getInputStream()));
